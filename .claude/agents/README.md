@@ -1,6 +1,6 @@
 # AgentSpec Core Agents
 
-AgentSpec includes **16 core agents** organized by category, all following the **KB-First architecture** with confidence scoring.
+AgentSpec includes **21 core agents** organized by category, all following the **KB-First architecture** with confidence scoring.
 
 ## Core Principle: KB-First Resolution
 
@@ -31,6 +31,18 @@ Drive the SDD workflow phases:
 | `build-agent` | Execute implementation with agent delegation | 3 |
 | `ship-agent` | Archive with lessons learned | 4 |
 | `iterate-agent` | Update documents with cascade awareness | All |
+
+### Operational Agents (5)
+
+Maintain the Project Memory layer:
+
+| Agent | Purpose |
+|-------|---------|
+| `project-tracker-agent` | Map completed work to roadmap tasks and refresh progress |
+| `session-analyst-agent` | Summarize sessions into decisions, blockers, and next steps |
+| `roadmap-guardian-agent` | Detect scope drift against the original idea and guardrails |
+| `weekly-forecaster-agent` | Estimate realistic next-week progress |
+| `executive-status-agent` | Convert project state into management-friendly summaries |
 
 ### Code Quality Agents (4)
 
@@ -78,3 +90,10 @@ Use `_template.md` as the definitive template. Key sections:
 ## Creating Domain-Specific Agents
 
 Use `_template.md` to create agents for your specific domain (e.g., AWS, GCP, data engineering, ML/AI). Place them in a new category directory under `agents/`.
+
+## Operational Guidance
+
+- Use workflow agents to move the feature through SDD.
+- Use operational agents to keep project state current between and during phases.
+- Prefer `roadmap-guardian-agent` whenever new requests may expand scope silently.
+- Prefer `session-analyst-agent` and `project-tracker-agent` together when writing checkpoints.

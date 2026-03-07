@@ -1,0 +1,134 @@
+{
+  "project_name": "AgentSpec",
+  "overall_progress": 72,
+  "last_updated": "2026-03-06",
+  "areas": [
+    {
+      "name": "Framework Architecture",
+      "progress": 85,
+      "notes": "Hybrid SDD plus project-memory model defined and integrated into repository structure.",
+      "tasks": [
+        {
+          "id": "arch-001",
+          "title": "Define project-memory folder model",
+          "status": "done",
+          "notes": "Operational layer added under .claude/project-memory.",
+          "dependencies": []
+        },
+        {
+          "id": "arch-002",
+          "title": "Align project-memory with SDD lifecycle",
+          "status": "done",
+          "notes": "Integration rules documented across status, checkpoints, and forecasting.",
+          "dependencies": [
+            "arch-001"
+          ]
+        },
+        {
+          "id": "arch-003",
+          "title": "Validate continuity into ship and archive workflows",
+          "status": "in_progress",
+          "notes": "Documentation covers continuity, but downstream examples can still expand.",
+          "dependencies": [
+            "arch-002"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Commands and Agents",
+      "progress": 80,
+      "notes": "New operational commands and agents now complement the SDD command set.",
+      "tasks": [
+        {
+          "id": "ops-001",
+          "title": "Create /start-project command",
+          "status": "done",
+          "notes": "Initializes manifest, roadmap, current state, and metrics.",
+          "dependencies": []
+        },
+        {
+          "id": "ops-002",
+          "title": "Create /checkpoint and /status commands",
+          "status": "done",
+          "notes": "Supports session logging and recovery context.",
+          "dependencies": [
+            "ops-001"
+          ]
+        },
+        {
+          "id": "ops-003",
+          "title": "Create /forecast-week command",
+          "status": "done",
+          "notes": "Generates forecast outputs and metrics update guidance.",
+          "dependencies": [
+            "ops-001"
+          ]
+        },
+        {
+          "id": "ops-004",
+          "title": "Add operational agents for tracking, drift detection, and forecasting",
+          "status": "done",
+          "notes": "Five new agents added under .claude/agents/operations.",
+          "dependencies": [
+            "ops-001",
+            "ops-002",
+            "ops-003"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Operational Templates",
+      "progress": 90,
+      "notes": "Templates are practical and intended for immediate reuse in future initialized projects.",
+      "tasks": [
+        {
+          "id": "tpl-001",
+          "title": "Create manifest and state templates",
+          "status": "done",
+          "notes": "Manifest, status, session, and checkpoint templates created.",
+          "dependencies": []
+        },
+        {
+          "id": "tpl-002",
+          "title": "Create forecast and executive reporting templates",
+          "status": "done",
+          "notes": "Forecast template and executive status reporting structure created.",
+          "dependencies": []
+        }
+      ]
+    },
+    {
+      "name": "Documentation and Adoption",
+      "progress": 55,
+      "notes": "Primary docs updated; broader examples can still be expanded in future releases.",
+      "tasks": [
+        {
+          "id": "docs-001",
+          "title": "Update root README for hybrid workflow",
+          "status": "done",
+          "notes": "Main value proposition expanded beyond pure SDD.",
+          "dependencies": []
+        },
+        {
+          "id": "docs-002",
+          "title": "Update command and agent catalog docs",
+          "status": "done",
+          "notes": "Indexes include new command and agent families.",
+          "dependencies": []
+        },
+        {
+          "id": "docs-003",
+          "title": "Expand tutorials and deeper examples for project memory",
+          "status": "todo",
+          "notes": "Could add detailed walkthroughs with realistic sample projects.",
+          "dependencies": [
+            "docs-001",
+            "docs-002"
+          ]
+        }
+      ]
+    }
+  ]
+}

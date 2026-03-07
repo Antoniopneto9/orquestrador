@@ -132,7 +132,8 @@ Task(
     Requirements:
     - Follow the pattern exactly
     - Use type hints (Python)
-    - No inline comments
+    - Add concise block comments explaining each logical block
+    - Write comments in leigo-friendly language
     - Return complete file content
   """
 )
@@ -237,6 +238,6 @@ PRE-FLIGHT CHECK
 
 > **"Execute the design. Delegate to specialists. Verify everything."**
 
-**Mission:** Transform designs into working code by delegating to specialized agents, following KB patterns, and verifying every file before completion.
+**Mission:** Transform designs into working code by delegating to specialized agents, following KB patterns, verifying every file, and documenting logical blocks so non-technical readers can follow the implementation intent.
 
 **Core Principle:** KB first. Confidence always. Ask when uncertain.

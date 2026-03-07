@@ -6,127 +6,110 @@ Complete catalog of commands, agents, templates, and configuration.
 
 ### Workflow Commands
 
-| Command        | Purpose                      | Input                                  | Output                        |
-|----------------|------------------------------|----------------------------------------|-------------------------------|
-| `/brainstorm`  | Explore ideas (Phase 0)      | Idea description or file path          | `BRAINSTORM_{FEATURE}.md`     |
-| `/define`      | Capture requirements (Phase 1)| Brainstorm file, notes, or description | `DEFINE_{FEATURE}.md`         |
-| `/design`      | Create architecture (Phase 2)| DEFINE file path                       | `DESIGN_{FEATURE}.md`         |
-| `/build`       | Execute implementation (Phase 3)| DESIGN file path                     | `BUILD_REPORT_{FEATURE}.md`   |
-| `/ship`        | Archive completed work (Phase 4)| DEFINE file path                     | `SHIPPED_{DATE}.md`           |
-| `/iterate`     | Update any phase document    | File path + change description         | Updated document + cascades   |
-| `/create-pr`   | Create pull request          | Optional title, `--draft`, `--review`  | GitHub PR                     |
+| Command | Purpose | Input | Output |
+|---------|---------|-------|--------|
+| `/brainstorm` | Explore ideas | Idea description or file path | `BRAINSTORM_{FEATURE}.md` |
+| `/define` | Capture requirements | Brainstorm file, notes, or description | `DEFINE_{FEATURE}.md` |
+| `/design` | Create architecture | DEFINE file path | `DESIGN_{FEATURE}.md` |
+| `/build` | Execute implementation | DESIGN file path | `BUILD_REPORT_{FEATURE}.md` |
+| `/ship` | Archive completed work | DEFINE file path | `SHIPPED_{DATE}.md` |
+| `/iterate` | Update any phase document | File path plus change description | Updated artifact set |
+| `/create-pr` | Create pull request | Optional title and flags | GitHub PR |
+
+### Project Memory Commands
+
+| Command | Purpose | Output |
+|---------|---------|--------|
+| `/start-project` | Initialize project-memory artifacts | manifest, roadmap, current state, metrics |
+| `/checkpoint` | Save operational checkpoint | checkpoint file plus refreshed current state |
+| `/status` | Recover and summarize project state | concise status report with next-step guidance |
+| `/forecast-week` | Estimate realistic next-week progress | executive report plus weekly metrics |
 
 ### Core Commands
 
-| Command         | Purpose                          | Input                    |
-|-----------------|----------------------------------|--------------------------|
-| `/memory`       | Save session insights to storage | Optional context note    |
-| `/sync-context` | Update CLAUDE.md from codebase   | `--section`, `--dry-run` |
-| `/readme-maker` | Generate README.md               | `--output`, `--style`    |
+| Command | Purpose | Input |
+|---------|---------|-------|
+| `/memory` | Save session insights to storage | Optional context note |
+| `/sync-context` | Update `CLAUDE.md` from codebase | flags |
+| `/readme-maker` | Generate `README.md` | flags |
 
 ### Knowledge Commands
 
-| Command       | Purpose                  | Input       |
-|---------------|--------------------------|-------------|
-| `/create-kb`  | Create a KB domain       | Domain name |
+| Command | Purpose |
+|---------|---------|
+| `/create-kb` | Create a KB domain |
 
 ### Review Commands
 
-| Command    | Purpose              | Input                                         |
-|------------|----------------------|-----------------------------------------------|
-| `/review`  | Dual AI code review  | `uncommitted`, `committed`, `--base`, `--deep`|
+| Command | Purpose |
+|---------|---------|
+| `/review` | Dual AI code review |
 
-## Agents (16 total)
+## Agents
 
-### Workflow Agents
+### Workflow Agents (6)
 
-| Agent              | Trigger                           | Model  |
-|--------------------|-----------------------------------|--------|
-| brainstorm-agent   | Raw ideas, vague requirements     | Opus   |
-| define-agent       | Requirements capture              | Opus   |
-| design-agent       | Architecture planning             | Opus   |
-| build-agent        | Implementation execution          | Sonnet |
-| ship-agent         | Feature archival                  | Haiku  |
-| iterate-agent      | Mid-stream changes                | Opus   |
+- `brainstorm-agent`
+- `define-agent`
+- `design-agent`
+- `build-agent`
+- `ship-agent`
+- `iterate-agent`
 
-### Code Quality Agents
+### Operational Agents (5)
 
-| Agent            | Trigger                        | Model  |
-|------------------|--------------------------------|--------|
-| code-reviewer    | Code review requests           | Sonnet |
-| code-cleaner     | Refactoring, DRY cleanup       | Sonnet |
-| code-documenter  | README, API docs, docstrings   | Sonnet |
-| test-generator   | Test writing, coverage gaps    | Sonnet |
+- `project-tracker-agent`
+- `session-analyst-agent`
+- `roadmap-guardian-agent`
+- `weekly-forecaster-agent`
+- `executive-status-agent`
 
-### Communication Agents
+### Code Quality Agents (4)
 
-| Agent                   | Trigger                          | Model  |
-|-------------------------|----------------------------------|--------|
-| adaptive-explainer      | Technical explanations           | Sonnet |
-| linear-project-manager  | Linear issue/project management  | Opus   |
-| meeting-analyst         | Meeting transcript analysis      | Sonnet |
-| the-planner             | Strategic planning, roadmaps     | Opus   |
+- `code-reviewer`
+- `code-cleaner`
+- `code-documenter`
+- `test-generator`
 
-### Exploration Agents
+### Communication Agents (4)
 
-| Agent              | Trigger                      | Model  |
-|--------------------|------------------------------|--------|
-| codebase-explorer  | Codebase navigation          | Sonnet |
-| kb-architect       | KB domain creation/audit     | Sonnet |
+- `adaptive-explainer`
+- `linear-project-manager`
+- `meeting-analyst`
+- `the-planner`
 
-## SDD Templates
+### Exploration Agents (2)
 
-All templates live in `.claude/sdd/templates/`:
+- `codebase-explorer`
+- `kb-architect`
 
-| Template                     | Phase     | Purpose                          |
-|------------------------------|-----------|----------------------------------|
-| `BRAINSTORM_TEMPLATE.md`     | Phase 0   | Idea exploration structure       |
-| `DEFINE_TEMPLATE.md`         | Phase 1   | Requirements with clarity score  |
-| `DESIGN_TEMPLATE.md`         | Phase 2   | Architecture with file manifest  |
-| `BUILD_REPORT_TEMPLATE.md`   | Phase 3   | Execution report with agent attribution |
-| `SHIPPED_TEMPLATE.md`        | Phase 4   | Archive with lessons learned     |
+## Project Memory Files
 
-## KB Templates
+| File | Purpose |
+|------|---------|
+| `.claude/project-memory/project-manifest.md` | project objective, idea, guardrails, workflow, suggested agents |
+| `.claude/project-memory/roadmap.json` | areas, tasks, dependencies, progress |
+| `.claude/project-memory/current-state.md` | live recovery context |
+| `.claude/project-memory/checkpoints/` | timestamped checkpoints |
+| `.claude/project-memory/sessions/` | optional detailed session logs |
+| `.claude/project-memory/metrics/weekly-metrics.json` | weekly delivery and forecast metrics |
+| `.claude/project-memory/metrics/progress-snapshot.json` | latest progress rollup |
+| `.claude/project-memory/reports/executive-status.md` | management-friendly weekly report |
 
-All templates live in `.claude/kb/_templates/`:
+## Templates
 
-| Template                        | Purpose                              |
-|---------------------------------|--------------------------------------|
-| `index.md.template`             | Domain overview and navigation       |
-| `quick-reference.md.template`   | Cheat sheet (max 100 lines)          |
-| `concept.md.template`           | Core concept explanation (max 150)   |
-| `pattern.md.template`           | Implementation pattern (max 200)     |
-| `domain-manifest.yaml.template` | Domain metadata and file registry    |
-| `spec.yaml.template`            | Machine-readable specifications      |
-| `test-case.json.template`       | Validation test cases                |
+### SDD Templates
 
-## Configuration
+- `.claude/sdd/templates/BRAINSTORM_TEMPLATE.md`
+- `.claude/sdd/templates/DEFINE_TEMPLATE.md`
+- `.claude/sdd/templates/DESIGN_TEMPLATE.md`
+- `.claude/sdd/templates/BUILD_REPORT_TEMPLATE.md`
+- `.claude/sdd/templates/SHIPPED_TEMPLATE.md`
 
-### Workflow Contracts
+### Project Memory Templates
 
-Phase transition rules are defined in `.claude/sdd/architecture/WORKFLOW_CONTRACTS.yaml`:
-
-- Phase inputs, outputs, and quality gates
-- Model allocation per phase (Opus/Sonnet/Haiku)
-- Naming conventions (`SCREAMING_SNAKE_CASE`)
-- Cascade rules for `/iterate`
-- Status transition logic
-
-### Settings
-
-Project settings in `.claude/settings.local.json`:
-
-- `permissions` — tool access control
-- `outputStyle` — response formatting (e.g., "Explanatory")
-
-## File Naming Conventions
-
-| Artifact                | Pattern                            | Location                    |
-|-------------------------|------------------------------------|-----------------------------|
-| Brainstorm document     | `BRAINSTORM_{FEATURE}.md`          | `.claude/sdd/features/`     |
-| Requirements document   | `DEFINE_{FEATURE}.md`              | `.claude/sdd/features/`     |
-| Design document         | `DESIGN_{FEATURE}.md`              | `.claude/sdd/features/`     |
-| Build report            | `BUILD_REPORT_{FEATURE}.md`        | `.claude/sdd/reports/`      |
-| Shipped archive         | `SHIPPED_{YYYY-MM-DD}.md`          | `.claude/sdd/archive/{FEATURE}/` |
-
-Feature names use `SCREAMING_SNAKE_CASE` (e.g., `USER_AUTH`, `JUDGE_LAYER`).
+- `.claude/project-memory/templates/manifest-template.md`
+- `.claude/project-memory/templates/session-template.md`
+- `.claude/project-memory/templates/checkpoint-template.md`
+- `.claude/project-memory/templates/status-template.md`
+- `.claude/project-memory/templates/forecast-template.md`

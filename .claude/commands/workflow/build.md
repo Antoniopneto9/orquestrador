@@ -158,7 +158,8 @@ Before marking complete, verify:
 2. **Verify Incrementally** - Test after each file, not at the end
 3. **Fix Forward** - If something breaks, fix it immediately
 4. **Self-Contained** - Each file should be independently functional
-5. **No Comments** - Code should be self-documenting
+5. **Explain Blocks** - Add concise block comments explaining what each block does and why
+6. **Leigo-Friendly** - Write explanations so a non-technical reader can understand the intent
 
 ---
 

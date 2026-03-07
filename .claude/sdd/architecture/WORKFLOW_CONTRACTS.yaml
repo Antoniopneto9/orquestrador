@@ -444,16 +444,16 @@ build:
       - "{test runner}"
 
   code_standards:
-    - no_inline_comments
+    - explanatory_block_comments_required
     - type_hints_required
-    - self_documenting_names
+    - meaningful_names_required
     - config_over_hardcode
 
   anti_patterns:
     - improvising: "Creating files not in manifest"
     - skipping_verify: "Not testing after creation"
     - todo_comments: "Leaving TODOs in code"
-    - inline_comments: "Explaining code with comments"
+    - missing_explanatory_comments: "Not explaining logical blocks for non-technical readers"
 
 # =============================================================================
 # PHASE 4: SHIP
@@ -773,9 +773,9 @@ status_transitions:
 
 quality:
   code:
-    - no_inline_comments
+    - explanatory_block_comments_required
     - type_hints_required
-    - self_documenting_names
+    - meaningful_names_required
     - config_in_yaml_not_code
     - self_contained_units
 

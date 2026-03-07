@@ -1,124 +1,111 @@
 # Getting Started with AgentSpec
 
-Get from zero to your first spec-driven feature in 10 minutes.
+Get from zero to a working hybrid delivery flow in 10 minutes.
 
 ## Prerequisites
 
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed
+- Claude Code CLI installed
 - Git
+
+If you are using another coding agent, treat the command files in `.claude/commands/` as procedural runbooks and keep the same artifact flow.
+
+Read `PROJECT_RULES.md` before any operational execution. It is the normative source for documentation compliance.
 
 ## Installation
 
 Clone the AgentSpec framework into your project:
 
 ```bash
-# Clone the repository
 git clone https://github.com/luanmorenommaciel/agentspec.git
-
-# Copy the .claude directory into your project
 cp -r agentspec/.claude your-project/.claude
-```
-
-Or add it directly to an existing project:
-
-```bash
-cd your-project
-git clone https://github.com/luanmorenommaciel/agentspec.git /tmp/agentspec
-cp -r /tmp/agentspec/.claude .claude
 ```
 
 ## Initialize Your Project
 
-The SDD directory structure is already set up:
+The hybrid directory structure is already set up:
 
 ```text
 your-project/.claude/
-├── agents/         # 16 specialized agents (ready to use)
-├── commands/       # 12 slash commands (ready to use)
-├── sdd/
-│   ├── features/   # Your active feature documents go here
-│   ├── reports/    # Build reports land here
-│   └── archive/    # Shipped features archived here
-└── kb/             # Add domain knowledge here
+|-- agents/            # Workflow, operational, quality, communication, exploration agents
+|-- commands/          # Workflow, project-memory, core, knowledge, review commands
+|-- sdd/               # Spec-Driven Development artifacts
+|-- project-memory/    # Roadmap, checkpoints, metrics, status, reports
+`-- kb/                # Domain knowledge
 ```
 
-## Your First Feature (5 minutes)
+## Recommended Flow
 
-Let's build a user authentication feature using the full SDD workflow.
-
-### Step 1: Brainstorm (Optional)
-
-Explore your idea through guided dialogue:
+### Step 1: Brainstorm
 
 ```bash
 claude> /brainstorm "I want to add user authentication with JWT"
 ```
 
-AgentSpec asks targeted questions, compares approaches, and helps you scope the work. Output: `BRAINSTORM_USER_AUTH.md`
-
-### Step 2: Define Requirements
-
-Capture formal requirements with a clarity score:
+### Step 2: Define
 
 ```bash
 claude> /define USER_AUTH
 ```
 
-Output: `DEFINE_USER_AUTH.md` with:
-
-- Problem statement and users
-- Functional and non-functional requirements
-- Acceptance criteria (Given/When/Then)
-- Clarity Score (must reach 12/15 to proceed)
-
-### Step 3: Design Architecture
-
-Create the technical architecture:
+### Step 3: Design
 
 ```bash
 claude> /design USER_AUTH
 ```
 
-Output: `DESIGN_USER_AUTH.md` with:
+### Step 4: Start the Project Memory Layer
 
-- Architecture diagram
-- File manifest with agent assignments
-- Key decisions (inline ADRs)
-- Code patterns (copy-paste ready)
+```bash
+claude> /start-project "User Authentication"
+```
 
-### Step 4: Build
+This creates `project-manifest.md`, `roadmap.json`, `current-state.md`, and initial metrics.
 
-Execute the implementation with agent matching:
+### Step 5: Build
 
 ```bash
 claude> /build USER_AUTH
 ```
 
-AgentSpec reads the DESIGN, matches specialized agents to each task, builds the code, and verifies it. Output: `BUILD_REPORT_USER_AUTH.md`
+### Step 6: Save Checkpoints During Execution
 
-### Step 5: Ship
+```bash
+claude> /checkpoint
+```
 
-Archive everything with lessons learned:
+### Step 7: Recover Context When Resuming
+
+```bash
+claude> /status
+```
+
+### Step 8: Plan the Next Week
+
+```bash
+claude> /forecast-week
+```
+
+### Step 9: Ship
 
 ```bash
 claude> /ship USER_AUTH
 ```
 
-Moves all artifacts to `.claude/sdd/archive/USER_AUTH/` with a SHIPPED document capturing what worked, what didn't, and recommendations.
+## What the New Layer Adds
 
-## What's Next
+- `project-manifest.md` keeps the original idea, objective, guardrails, and recommended workflow.
+- `roadmap.json` tracks areas, tasks, dependencies, and progress.
+- `current-state.md` gives a recovery-ready snapshot.
+- `checkpoints/` stores timestamped operational snapshots.
+- `metrics/` and `reports/` support planning and executive communication.
 
-- [Core Concepts](../concepts/) — understand how phases, agents, and KB work together
-- [Tutorials](../tutorials/) — step-by-step walkthroughs for common workflows
-- [Reference](../reference/) — full command and agent catalog
+## Operational Definition of Done
 
-## Troubleshooting
+A materially completed task is only done when:
 
-**Commands not recognized?**
-Ensure `.claude/commands/` exists in your project root with the slash command files.
+- `current-state.md` was updated
+- a checkpoint file was created
+- applicable roadmap task statuses moved to `done`
+- the close-out includes `Compliance status: PASS/FAIL`
 
-**Agent not matching?**
-Check that `.claude/agents/` contains the agent `.md` files. Agents are discovered via glob pattern.
-
-**Clarity score too low?**
-The `/define` phase requires 12/15 to proceed. Add more detail to Problem, Users, Goals, Success criteria, and Scope sections.
+Use the required `Task Completion Record` from `PROJECT_RULES.md` to close every task consistently.
