@@ -44,3 +44,7 @@ for idx, row in df.iterrows():
 if st.button("💾 Salvar todas as alterações", type="primary"):
     salvar_linha_do_tempo(updated_rows)
     st.success("Linha do tempo salva com sucesso!")
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "4_linha_do_tempo")

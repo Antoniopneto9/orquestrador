@@ -48,3 +48,7 @@ st.metric("Média desta sessão", session_avg)
 if st.button("💾 Salvar", type="primary"):
     saved_avg = salvar_queixas(answers, date_str, observacao)
     st.success(f"Queixas salvas! Média do dia: {saved_avg}/10")
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "3_queixas")

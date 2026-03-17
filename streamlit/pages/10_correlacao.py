@@ -22,3 +22,7 @@ st.caption("Mostra a relação entre cumprimento de hábitos e nível de sofrime
 
 # Orchestrates data loading, computation, validation, and rendering
 renderizar_correlacao_completa()
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "10_correlacao")

@@ -1,0 +1,5 @@
+# STATUS: DONE
+# Resolvido em: 2026-03-17
+[2026-03-17 10:00] RESOLVIDO [2026-03-17]: a inclusão de tarefas não aceita mais que uma, cada vez que colocar uma tarefa ele deve ir criando uma lista de tarefas com um botão de concluído e anotações sobre
+[2026-03-17 10:04] RESOLVIDO [2026-03-17]: incluir barra de progresso e etapas que foram concluídas, colocar beep no final de cada etapa e ler qual etapa vai começar text to speak
+[2026-03-17 10:05] RESOLVIDO [2026-03-17]: colocar skip de etapas, pausa.

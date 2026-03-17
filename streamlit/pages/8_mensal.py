@@ -56,3 +56,7 @@ renderizar_tabela_diaria(df, active_habits)
 st.divider()
 st.subheader("Totais do Mês")
 renderizar_totais_mes(df, active_habits)
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "8_mensal")

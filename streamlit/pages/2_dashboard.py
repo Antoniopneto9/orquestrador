@@ -56,3 +56,7 @@ st.divider()
 # Complaint KPIs
 df_queixas = carregar_queixas()
 renderizar_kpis_queixas(df_queixas)
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "2_dashboard")

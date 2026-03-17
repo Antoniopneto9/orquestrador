@@ -66,10 +66,13 @@ def maybe_show_checkin_popup() -> None:
 def render_sidebar_extras() -> None:
     """Render sidebar widgets: idea capture and optional Pomodoro status."""
     with st.sidebar:
+        st.markdown("---")
+        st.markdown("### Ferramentas Rapidas")
+
         # Ideas capture
         with st.expander("💡 Capturar ideia"):
             idea_text = st.text_area("", key="idea_input_sidebar", height=80, label_visibility="collapsed")
-            if st.button("Salvar ideia", key="btn_save_idea_sidebar"):
+            if st.button("💾 Salvar ideia", key="btn_save_idea_sidebar", use_container_width=True):
                 if idea_text.strip():
                     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
                     IDEIAS_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -84,12 +87,30 @@ def render_sidebar_extras() -> None:
             work_min = st.session_state.get("pomo_work_min", 25)
             break_min = st.session_state.get("pomo_break_min", 5)
             total_seg = (work_min if fase == "trabalho" else break_min) * 60
-            elapsed = int(time.time() - inicio_ts)
+            pausado = st.session_state.get("pomo_pausado", False)
+            elapsed_acum = st.session_state.get("pomo_elapsed_acumulado", 0)
+            if pausado:
+                elapsed = elapsed_acum
+            else:
+                elapsed = elapsed_acum + int(time.time() - inicio_ts)
             remaining = max(0, total_seg - elapsed)
             mins = remaining // 60
             secs = remaining % 60
             color = "normal" if fase == "trabalho" else "off"
-            st.metric("⏱ Pomodoro", f"{fase} — {mins:02d}:{secs:02d}", delta_color=color)
+            icon = "🎯" if fase == "trabalho" else "☕"
+            pausa_label = " (pausado)" if pausado else ""
+            st.markdown("---")
+            st.markdown(f"**{icon} Pomodoro ativo**")
+            st.metric(
+                label=f"{fase.capitalize()}{pausa_label}",
+                value=f"{mins:02d}:{secs:02d}",
+                delta_color=color,
+            )
+            ciclo = st.session_state.get("pomo_ciclo", 1)
+            st.caption(f"Ciclo {ciclo}")
+
+        st.markdown("---")
+        st.caption(f"Sessao iniciada em {datetime.now().strftime('%d/%m/%Y')}")
 
 
 # ── Per-page feedback box ────────────────────────────────────────────────────

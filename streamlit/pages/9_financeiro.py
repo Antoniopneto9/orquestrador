@@ -34,3 +34,7 @@ with tab2:
 
 with tab3:
     tab_progresso(df)
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "9_financeiro")

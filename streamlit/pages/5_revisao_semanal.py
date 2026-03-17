@@ -44,3 +44,7 @@ if st.button("💾 Salvar revisão", type="primary"):
 # Past reviews expander
 st.divider()
 renderizar_historico(df)
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "5_revisao_semanal")

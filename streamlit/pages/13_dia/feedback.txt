@@ -1,0 +1,5 @@
+# STATUS: DONE
+# Resolvido em: 2026-03-17
+[2026-03-17 10:02] RESOLVIDO [2026-03-17]: faltou o feedback em quase todas as paginas. incluir
+[2026-03-17 10:03] RESOLVIDO [2026-03-17]: deixar a organização e o pomodoro na mesma pagina.
+[2026-03-17 10:05] RESOLVIDO [2026-03-17]: colocar icones e formatação do sidebar.

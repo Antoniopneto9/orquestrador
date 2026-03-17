@@ -46,3 +46,7 @@ col_c.metric("Percentual", f"{pct}%")
 if st.button("💾 Salvar", type="primary"):
     salvar_check_in(answers, date_str, total_yes, pct)
     st.success(f"Salvo! {total_yes}/{total_habits} hábitos cumpridos ({pct}%)")
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "1_rastreador")

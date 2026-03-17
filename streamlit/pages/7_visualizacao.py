@@ -24,3 +24,7 @@ st.divider()
 
 # Render all 6 identity visualization sections
 renderizar_todas_secoes()
+
+from utils.components import render_feedback_box
+st.divider()
+render_feedback_box(_HERE / "7_visualizacao")
