@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:\\\\Users\\\\c39529b\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -c \"import winsound; print\\(''winsound ok''\\)\")",
+      "Bash(\"C:\\\\Users\\\\c39529b\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -m pip install pyttsx3)",
+      "Bash(\"C:\\\\Users\\\\c39529b\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -c \"import ast; ast.parse\\(open\\(''c:/projects/organizador_semanal/ORGANIZADOR_SEMANAL/projects/intensional_season/streamlit/pages/6_meditacao/functions.py'', encoding=''utf-8''\\).read\\(\\)\\); print\\(''OK''\\)\")"
+    ]
+  }
+}

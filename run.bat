@@ -1,0 +1,6 @@
+@echo off
+echo Encerrando instancias anteriores do Streamlit...
+taskkill /F /IM streamlit.exe >nul 2>&1
+timeout /t 1 /nobreak >nul
+echo Iniciando app...
+"C:\Users\c39529b\AppData\Local\Programs\Python\Python312\Scripts\streamlit.exe" run "%~dp0streamlit\app.py"

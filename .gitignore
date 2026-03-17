@@ -30,3 +30,8 @@ node_modules/
 
 # Logs
 *.log
+
+# Personal data
+data/intentional_season.xlsx
+data/livros/
+data/ideias.txt
